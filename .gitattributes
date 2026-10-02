@@ -1,0 +1,9 @@
+# 跨平台行尾：仓库内一律 LF（Windows 上工作区仍可保持 CRLF，diff 不会有噪音）
+* text=auto eol=lf
+
+# 二进制（本仓库目前不含，留作将来放截图/素材时用）
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp3 binary
+*.m4a binary

@@ -1,0 +1,16 @@
+# 依赖（本包刻意零运行时依赖，这个目录正常不存在）
+node_modules/
+
+# 运行期状态：插件写在 $DSH_HOME/pomodoro/，不该进仓库
+state.json
+events.jsonl
+probe.jsonl
+*.bak-*
+*.tmp
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

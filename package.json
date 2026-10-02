@@ -1,0 +1,53 @@
+{
+  "name": "@dsh-external/dsh-pomodoro-ai",
+  "version": "0.1.0",
+  "description": "AI 番茄钟 for DeepSeek Harness：全局唯一的钟 + 会话级「管家」隔离 + 窗口内浮层部件",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "tools",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tools/smoke.mjs && node tools/host-smoke.mjs && node tools/client-check.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "pomodoro",
+    "timer",
+    "ai-agent"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonheartcra/dsh-pomodoro-ai.git"
+  },
+  "homepage": "https://github.com/dragonheartcra/dsh-pomodoro-ai#readme",
+  "bugs": {
+    "url": "https://github.com/dragonheartcra/dsh-pomodoro-ai/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ],
+      "platform": "web"
+    }
+  }
+}

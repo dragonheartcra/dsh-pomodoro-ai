@@ -1,0 +1,6 @@
+# dsh-pomodoro-ai bundle 层：把插件行插进 profile 组合。
+# 开发期用 dev_inject_plugin（免重启）；稳定后用 dev_install_package 固化，
+# 重启后由官方 bundles 列表按本文件装配。
+- insert:
+    - id: dsh-pomodoro-ai
+      name: '@dsh-external/dsh-pomodoro-ai'
