@@ -288,6 +288,36 @@ check('迷你态只有圆圈 + 数字 + 一行小字', (() => {
   const texts = collectText(miniTree).filter((t) => String(t).trim()).map((t) => String(t).trim())
   return texts.length === 2 && /^\d\d:\d\d$/.test(texts[0]) && /^(focus|relax|ready)$/.test(texts[1])
 })(), collectText(miniTree))
+// 形状由 SVG 几何保证，不依赖 CSS（borderRadius:50% 实测被渲染成圆角方形）
+/** 按元素类型收集（collectStyled 只收带 style 的，SVG 圆底没有 style 属性）。 */
+function collectByType(node, type, out = []) {
+  if (!node || typeof node !== 'object') return out
+  if (Array.isArray(node)) {
+    for (const c of node) collectByType(c, type, out)
+    return out
+  }
+  if (node.props) {
+    if (node.type === type) out.push(node)
+    collectByType(node.props.children, type, out)
+  }
+  return out
+}
+check('迷你态圆底是 SVG 实心圆（不靠 CSS 圆角）', (() => {
+  const circles = collectByType(miniTree, 'circle')
+  const bg = circles[0]
+  return (
+    circles.length === 3 &&
+    Boolean(bg) &&
+    typeof bg.props.fill === 'string' &&
+    bg.props.fill !== 'none' &&
+    bg.props.strokeDasharray === undefined &&
+    bg.props.r === 41 - 0.5
+  )
+})(), collectByType(miniTree, 'circle').map((c) => ({ fill: c.props.fill, r: c.props.r })))
+check('迷你态容器不再设 border-radius/背景（避免方形阴影）', (() => {
+  const wrap = collectStyled(miniTree).find((el) => typeof el.props?.style?.filter === 'string' && el.props.style.filter.includes('drop-shadow'))
+  return Boolean(wrap) && wrap.props.style.borderRadius === undefined && wrap.props.style.background === undefined && wrap.props.style.boxShadow === undefined
+})(), null)
 
 // 数字下方的小字：focus / relax（用户要求一眼看出专注还是休息）
 const miniLabelFor = (snap) => {

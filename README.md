@@ -8,6 +8,12 @@
 
 [English](README.en.md)
 
+<p align="center">
+  <img src="docs/widget-expanded.png" width="300" alt="展开态：圆环、控制按钮、计划/声音/周统计面板">
+  &nbsp;&nbsp;
+  <img src="docs/widget-mini.png" width="120" alt="迷你态：只有一个会随时间烧短的圆环 + 时间 + focus/relax">
+</p>
+
 ---
 
 ## 它解决什么问题

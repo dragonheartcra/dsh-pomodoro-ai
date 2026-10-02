@@ -10,6 +10,12 @@ no second AI can touch your clock.
 
 [中文](README.md)
 
+<p align="center">
+  <img src="docs/widget-expanded.png" width="300" alt="Expanded: ring, controls, plan / sound / weekly panels">
+  &nbsp;&nbsp;
+  <img src="docs/widget-mini.png" width="120" alt="Mini: a single ring that burns down, the time, and a focus/relax label">
+</p>
+
 ---
 
 ## What it solves
